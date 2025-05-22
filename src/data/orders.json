@@ -1,0 +1,213 @@
+[
+    {
+      "orderId": "O001",
+      "customerName": "Ahmad Firdaus",
+      "status": "Completed",
+      "totalPrice": 250000,
+      "orderDate": "2024-12-01"
+    },
+    {
+      "orderId": "O002",
+      "customerName": "Lia Pratiwi",
+      "status": "Pending",
+      "totalPrice": 150000,
+      "orderDate": "2024-12-02"
+    },
+    {
+      "orderId": "O003",
+      "customerName": "Rudi Hartono",
+      "status": "Cancelled",
+      "totalPrice": 120000,
+      "orderDate": "2024-12-03"
+    },
+    {
+      "orderId": "O004",
+      "customerName": "Dewi Lestari",
+      "status": "Completed",
+      "totalPrice": 340000,
+      "orderDate": "2024-12-04"
+    },
+    {
+      "orderId": "O005",
+      "customerName": "Budi Santoso",
+      "status": "Pending",
+      "totalPrice": 180000,
+      "orderDate": "2024-12-05"
+    },
+    {
+      "orderId": "O006",
+      "customerName": "Nina Agustina",
+      "status": "Completed",
+      "totalPrice": 220000,
+      "orderDate": "2024-12-06"
+    },
+    {
+      "orderId": "O007",
+      "customerName": "Andi Saputra",
+      "status": "Cancelled",
+      "totalPrice": 130000,
+      "orderDate": "2024-12-07"
+    },
+    {
+      "orderId": "O008",
+      "customerName": "Yuni Kartika",
+      "status": "Pending",
+      "totalPrice": 160000,
+      "orderDate": "2024-12-08"
+    },
+    {
+      "orderId": "O009",
+      "customerName": "Fajar Hidayat",
+      "status": "Completed",
+      "totalPrice": 270000,
+      "orderDate": "2024-12-09"
+    },
+    {
+      "orderId": "O010",
+      "customerName": "Sinta Marlina",
+      "status": "Pending",
+      "totalPrice": 195000,
+      "orderDate": "2024-12-10"
+    },
+    {
+      "orderId": "O011",
+      "customerName": "Rahmat Yulianto",
+      "status": "Completed",
+      "totalPrice": 240000,
+      "orderDate": "2024-12-11"
+    },
+    {
+      "orderId": "O012",
+      "customerName": "Lilis Suryani",
+      "status": "Cancelled",
+      "totalPrice": 140000,
+      "orderDate": "2024-12-12"
+    },
+    {
+      "orderId": "O013",
+      "customerName": "Tommy Gunawan",
+      "status": "Pending",
+      "totalPrice": 175000,
+      "orderDate": "2024-12-13"
+    },
+    {
+      "orderId": "O014",
+      "customerName": "Indah Ramadhani",
+      "status": "Completed",
+      "totalPrice": 300000,
+      "orderDate": "2024-12-14"
+    },
+    {
+      "orderId": "O015",
+      "customerName": "Dimas Aryo",
+      "status": "Cancelled",
+      "totalPrice": 155000,
+      "orderDate": "2024-12-15"
+    },
+    {
+      "orderId": "O016",
+      "customerName": "Ratna Ayu",
+      "status": "Completed",
+      "totalPrice": 260000,
+      "orderDate": "2024-12-16"
+    },
+    {
+      "orderId": "O017",
+      "customerName": "Joko Anwar",
+      "status": "Pending",
+      "totalPrice": 145000,
+      "orderDate": "2024-12-17"
+    },
+    {
+      "orderId": "O018",
+      "customerName": "Mega Lestari",
+      "status": "Completed",
+      "totalPrice": 230000,
+      "orderDate": "2024-12-18"
+    },
+    {
+      "orderId": "O019",
+      "customerName": "Rian Prakoso",
+      "status": "Cancelled",
+      "totalPrice": 165000,
+      "orderDate": "2024-12-19"
+    },
+    {
+      "orderId": "O020",
+      "customerName": "Tina Sari",
+      "status": "Pending",
+      "totalPrice": 190000,
+      "orderDate": "2024-12-20"
+    },
+    {
+      "orderId": "O021",
+      "customerName": "Hendra Wijaya",
+      "status": "Completed",
+      "totalPrice": 280000,
+      "orderDate": "2024-12-21"
+    },
+    {
+      "orderId": "O022",
+      "customerName": "Putri Amelia",
+      "status": "Cancelled",
+      "totalPrice": 110000,
+      "orderDate": "2024-12-22"
+    },
+    {
+      "orderId": "O023",
+      "customerName": "Gilang Mahesa",
+      "status": "Pending",
+      "totalPrice": 170000,
+      "orderDate": "2024-12-23"
+    },
+    {
+      "orderId": "O024",
+      "customerName": "Sarah Anjani",
+      "status": "Completed",
+      "totalPrice": 255000,
+      "orderDate": "2024-12-24"
+    },
+    {
+      "orderId": "O025",
+      "customerName": "Bayu Hidayat",
+      "status": "Pending",
+      "totalPrice": 180000,
+      "orderDate": "2024-12-25"
+    },
+    {
+      "orderId": "O026",
+      "customerName": "Melati Anggraeni",
+      "status": "Completed",
+      "totalPrice": 310000,
+      "orderDate": "2024-12-26"
+    },
+    {
+      "orderId": "O027",
+      "customerName": "Rosa Melinda",
+      "status": "Cancelled",
+      "totalPrice": 100000,
+      "orderDate": "2024-12-27"
+    },
+    {
+      "orderId": "O028",
+      "customerName": "Reza Saputra",
+      "status": "Pending",
+      "totalPrice": 185000,
+      "orderDate": "2024-12-28"
+    },
+    {
+      "orderId": "O029",
+      "customerName": "Anisa Maulida",
+      "status": "Completed",
+      "totalPrice": 290000,
+      "orderDate": "2024-12-29"
+    },
+    {
+      "orderId": "O030",
+      "customerName": "Taufik Rahman",
+      "status": "Pending",
+      "totalPrice": 160000,
+      "orderDate": "2024-12-30"
+    }
+  ]
+  
