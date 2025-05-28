@@ -1,5 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import GuestHeader from '../components/GuestHeader';
+// Mock data untuk members (biasanya dari members.json)
+const membersData = [
+  {
+    member_id: "MBR001",
+    nama: "Ahmad Rizki",
+    email: "ahmad.rizki@email.com",
+    tipe_member: "platinum"
+  },
+  {
+    member_id: "MBR002", 
+    nama: "Sari Dewi",
+    email: "sari.dewi@email.com",
+    tipe_member: "gold"
+  },
+  {
+    member_id: "MBR003",
+    nama: "Budi Santoso", 
+    email: "budi.santoso@email.com",
+    tipe_member: "silver"
+  },
+  {
+    member_id: "MBR004",
+    nama: "Maya Lestari",
+    email: "maya.lestari@email.com", 
+    tipe_member: "gold"
+  },
+  {
+    member_id: "MBR005",
+    nama: "Reza Pratama",
+    email: "reza.pratama@email.com",
+    tipe_member: "platinum"
+  }
+];
+
 // Mock data untuk produk unggulan
 const topProducts = [
   {
@@ -85,7 +119,78 @@ const testimonials = [
   }
 ];
 
+
+
 const GuestDashboard = () => {
+  const [email, setEmail] = useState('');
+  const [memberResult, setMemberResult] = useState(null);
+  const [emailError, setEmailError] = useState('');
+  const [isChecking, setIsChecking] = useState(false);
+
+  // Email validation function
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Check membership function
+  const checkMembership = () => {
+    // Reset previous results
+    setEmailError('');
+    setMemberResult(null);
+    setIsChecking(true);
+
+    // Validation
+    if (!email.trim()) {
+      setEmailError('Email tidak boleh kosong');
+      setIsChecking(false);
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      setEmailError('Format email tidak valid');
+      setIsChecking(false);
+      return;
+    }
+
+    // Simulate API call delay
+    setTimeout(() => {
+      const member = membersData.find(m => m.email.toLowerCase() === email.toLowerCase());
+      setMemberResult(member);
+      setIsChecking(false);
+    }, 1000);
+  };
+
+  // Get member type styling
+  const getMemberStyling = (type) => {
+    switch(type) {
+      case 'platinum':
+        return {
+          bg: 'bg-gradient-to-r from-purple-500 to-pink-500',
+          icon: '💎',
+          textColor: 'text-purple-600'
+        };
+      case 'gold':
+        return {
+          bg: 'bg-gradient-to-r from-yellow-500 to-orange-500',
+          icon: '🥇',
+          textColor: 'text-yellow-600'
+        };
+      case 'silver':
+        return {
+          bg: 'bg-gradient-to-r from-gray-500 to-gray-600',
+          icon: '🥈',
+          textColor: 'text-gray-600'
+        };
+      default:
+        return {
+          bg: 'bg-gray-500',
+          icon: '👤',
+          textColor: 'text-gray-600'
+        };
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-600">
       {/* Header Component */}
@@ -118,16 +223,16 @@ const GuestDashboard = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a 
-                href="#products" 
+                href="#membership" 
                 className="bg-white/20 backdrop-blur-md text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:bg-white/30 hover:-translate-y-0.5 border border-white/30"
               >
-                Coba Gratis
+                Cek Member
               </a>
               <a 
-                href="#about" 
+                href="#products" 
                 className="bg-white text-gray-700 px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
               >
-                Mulai Sekarang
+                Lihat Menu
               </a>
             </div>
           </div>
@@ -145,6 +250,115 @@ const GuestDashboard = () => {
               </div>
               <div className="absolute top-12 -left-4 bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/20 animate-pulse" style={{ animationDelay: '2s' }}>
                 <div className="text-white font-semibold text-sm">🥇 Favorit</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Member Check Section */}
+      <section id="membership" className="py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
+        <div className="max-w-4xl mx-auto px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Cek Keanggotaan</h2>
+            <p className="text-lg text-gray-600">Masukkan email Anda untuk mengecek status keanggotaan di Sedap</p>
+          </div>
+          
+          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-2xl mx-auto">
+            <div className="space-y-6">
+              <div>
+                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && checkMembership()}
+                  className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-300 ${
+                    emailError ? 'border-red-500 focus:ring-red-500' : 'border-gray-300'
+                  }`}
+                  placeholder="contoh@email.com"
+                />
+                {emailError && (
+                  <p className="mt-2 text-sm text-red-600 flex items-center">
+                    <span className="mr-1">❌</span>
+                    {emailError}
+                  </p>
+                )}
+              </div>
+
+              <button
+                onClick={checkMembership}
+                disabled={isChecking}
+                className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              >
+                {isChecking ? (
+                  <span className="flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                    Mengecek...
+                  </span>
+                ) : (
+                  'Cek Keanggotaan'
+                )}
+              </button>
+
+              {/* Result Display */}
+              {memberResult !== null && (
+                <div className="mt-6 p-6 rounded-xl border-2 animate-fadeIn">
+                  {memberResult ? (
+                    <div className={`${getMemberStyling(memberResult.tipe_member).bg} p-6 rounded-xl text-white`}>
+                      <div className="flex items-center justify-center mb-4">
+                        <span className="text-4xl mr-3">{getMemberStyling(memberResult.tipe_member).icon}</span>
+                        <div className="text-center">
+                          <h3 className="text-2xl font-bold">Selamat datang!</h3>
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-lg mb-2">
+                          🧾 <strong>{memberResult.nama}</strong>
+                        </p>
+                        <p className="text-lg">
+                          Anda adalah member <strong className="uppercase">{memberResult.tipe_member}</strong>
+                        </p>
+                        <div className="mt-4 bg-white/20 backdrop-blur-sm rounded-lg p-3">
+                          <p className="text-sm">Member ID: {memberResult.member_id}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="bg-red-50 border-2 border-red-200 p-6 rounded-xl text-center">
+                      <div className="text-4xl mb-3">❌</div>
+                      <h3 className="text-xl font-semibold text-red-700 mb-2">Email Tidak Terdaftar</h3>
+                      <p className="text-red-600">Email tidak terdaftar sebagai member.</p>
+                      <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                        <p className="text-sm text-blue-700">
+                          💡 Ingin bergabung? <a href="#" className="font-semibold underline hover:no-underline">Daftar sekarang</a> dan nikmati berbagai keuntungan member!
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Demo Accounts */}
+              <div className="mt-8 p-4 bg-gray-50 rounded-xl">
+                <h4 className="font-semibold text-gray-700 mb-3">🧪 Demo Accounts (untuk testing):</h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                  <div className="bg-purple-100 p-2 rounded flex items-center">
+                    <span className="mr-2">💎</span>
+                    <span className="text-purple-700">ahmad.rizki@email.com</span>
+                  </div>
+                  <div className="bg-yellow-100 p-2 rounded flex items-center">
+                    <span className="mr-2">🥇</span>
+                    <span className="text-yellow-700">sari.dewi@email.com</span>
+                  </div>
+                  <div className="bg-gray-100 p-2 rounded flex items-center">
+                    <span className="mr-2">🥈</span>
+                    <span className="text-gray-700">budi.santoso@email.com</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
