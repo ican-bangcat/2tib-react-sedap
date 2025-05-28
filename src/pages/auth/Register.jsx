@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Register() {
     return (
         <div>
@@ -16,8 +18,7 @@ export default function Register() {
                     <input
                         type="email"
                         id="email"
-                        className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm
-                            placeholder-gray-400"
+                        className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400"
                         placeholder="you@example.com"
                     />
                 </div>
@@ -32,8 +33,7 @@ export default function Register() {
                     <input
                         type="password"
                         id="password"
-                        className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm
-                            placeholder-gray-400"
+                        className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400"
                         placeholder="********"
                     />
                 </div>
@@ -48,20 +48,26 @@ export default function Register() {
                     <input
                         type="password"
                         id="confirmPassword"
-                        className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm
-                            placeholder-gray-400"
+                        className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400"
                         placeholder="********"
                     />
                 </div>
 
                 <button
                     type="submit"
-                    className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4
-                        rounded-lg transition duration-300"
+                    className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300"
                 >
                     Register
                 </button>
             </form>
+
+            {/* Tambahan: Sudah punya akun */}
+            <p className="mt-4 text-center text-sm text-gray-600">
+                Sudah punya akun?{' '}
+                <Link to="/login" className="text-blue-600 hover:underline">
+                    Login di sini
+                </Link>
+            </p>
         </div>
-    )
+    );
 }
