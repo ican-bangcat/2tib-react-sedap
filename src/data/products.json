@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Nasi Gudeg Jogja",
+    "price": 25000,
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=300&h=200&fit=crop",
+    "rating": 4.8
+  },
+  {
+    "id": 2,
+    "name": "Sate Ayam Madura",
+    "price": 30000,
+    "image": "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=300&h=200&fit=crop",
+    "rating": 4.9
+  },
+  {
+    "id": 3,
+    "name": "Rendang Padang",
+    "price": 35000,
+    "image": "https://images.unsplash.com/photo-1604909052743-94e838986d24?w=300&h=200&fit=crop",
+    "rating": 4.7
+  },
+  {
+    "id": 4,
+    "name": "Bakso Malang",
+    "price": 20000,
+    "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=300&h=200&fit=crop",
+    "rating": 4.6
+  },
+  {
+    "id": 5,
+    "name": "Gado-gado Jakarta",
+    "price": 18000,
+    "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=300&h=200&fit=crop",
+    "rating": 4.5
+  },
+  {
+    "id": 6,
+    "name": "Ayam Betutu Bali",
+    "price": 40000,
+    "image": "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=300&h=200&fit=crop",
+    "rating": 4.8
+  }
+]

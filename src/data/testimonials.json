@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Andi Setiawan",
+    "avatar": "https://avatar-placeholder.iran.liara.run/?username=Andi&background=6366f1&color=fff",
+    "review": "Aplikasi Sedap benar-benar mengubah cara saya menikmati kuliner! Pilihan makanannya sangat beragam dan semuanya terasa autentik.",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Maya Sari",
+    "avatar": "https://avatar-placeholder.iran.liara.run/?username=Maya&background=8b5cf6&color=fff",
+    "review": "Pelayanan cepat dan makanan selalu sampai dalam kondisi hangat. Sangat puas dengan kualitas dan cita rasanya!",
+    "rating": 5
+  },
+  {
+    "id": 3,
+    "name": "Budi Hartono",
+    "avatar": "https://avatar-placeholder.iran.liara.run/?username=Budi&background=f59e0b&color=fff",
+    "review": "Sebagai pecinta kuliner, saya sangat terkesan dengan variasi menu di Sedap. Harga terjangkau dengan kualitas premium.",
+    "rating": 4
+  },
+  {
+    "id": 4,
+    "name": "Sinta Dewi",
+    "avatar": "https://avatar-placeholder.iran.liara.run/?username=Sinta&background=ef4444&color=fff",
+    "review": "Interface yang user-friendly dan proses pemesanan yang mudah. Sangat membantu untuk menemukan makanan favorit!",
+    "rating": 5
+  },
+  {
+    "id": 5,
+    "name": "Rizki Pratama",
+    "avatar": "https://avatar-placeholder.iran.liara.run/?username=Rizki&background=10b981&color=fff",
+    "review": "Kualitas makanan konsisten dan delivery selalu tepat waktu. Sedap memang pilihan terbaik untuk kuliner nusantara!",
+    "rating": 4
+  }
+]

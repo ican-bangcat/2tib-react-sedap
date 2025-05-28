@@ -1,0 +1,32 @@
+[
+  {
+    "member_id": "MBR001",
+    "nama": "Ahmad Rizki",
+    "email": "ahmad.rizki@email.com",
+    "tipe_member": "platinum"
+  },
+  {
+    "member_id": "MBR002", 
+    "nama": "Sari Dewi",
+    "email": "sari.dewi@email.com",
+    "tipe_member": "gold"
+  },
+  {
+    "member_id": "MBR003",
+    "nama": "Budi Santoso", 
+    "email": "budi.santoso@email.com",
+    "tipe_member": "silver"
+  },
+  {
+    "member_id": "MBR004",
+    "nama": "Maya Lestari",
+    "email": "maya.lestari@email.com", 
+    "tipe_member": "gold"
+  },
+  {
+    "member_id": "MBR005",
+    "nama": "Reza Pratama",
+    "email": "reza.pratama@email.com",
+    "tipe_member": "platinum"
+  }
+]
