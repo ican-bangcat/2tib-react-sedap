@@ -2,7 +2,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { AiTwotoneCustomerService } from "react-icons/ai";
 import { VscListFlat } from "react-icons/vsc";
-import { MdDashboard } from "react-icons/md";
+import { MdDashboard, MdFastfood } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 export default function ListMenu() {
   const menuClass = ({ isActive }) =>
@@ -35,8 +35,14 @@ export default function ListMenu() {
         </li>
         <li>
           <NavLink id="menu-7" to="/users" className={menuClass}>
-            <AiOutlineUser  className="mr-4 text-xl"/>
+            <AiOutlineUser className="mr-4 text-xl" />
             Users
+          </NavLink>
+        </li>
+        <li>
+          <NavLink id="menu-8" to="/products" className={menuClass}>
+            <MdFastfood className="mr-4 text-x1" />
+            Products
           </NavLink>
         </li>
         <li>
