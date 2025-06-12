@@ -4,7 +4,7 @@ import AlertBox from "../components/AlertBox";
 import GenericTable from "../components/GenericTable";
 import EmptyState from "../components/EmptyState";
 import LoadingSpinner from "../components/LoadingSpinner";
-import { AiFillDelete } from "react-icons/ai";
+import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 export default function Notes() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -15,7 +15,57 @@ export default function Notes() {
     content: "",
     status: "",
   });
+  const [editingId, setEditingId] = useState(null); // State untuk menyimpan id yang sedang diedit
+  const [editForm, setEditForm] = useState({
+    // State untuk form edit
+    title: "",
+    content: "",
+    status: "",
+  });
 
+  // Fungsi untuk memulai edit
+  const handleStartEdit = (note) => {
+    setEditingId(note.id);
+    setEditForm({
+      title: note.title,
+      content: note.content,
+      status: note.status || "",
+    });
+  };
+
+  // Fungsi untuk membatalkan edit
+  const handleCancelEdit = () => {
+    setEditingId(null);
+  };
+
+  // Fungsi untuk menyimpan edit
+  const handleSaveEdit = async (id) => {
+    try {
+      setLoading(true);
+      setError("");
+
+      await notesAPI.updateNote(id, editForm);
+
+      setSuccess("Catatan berhasil diupdate!");
+      setTimeout(() => setSuccess(""), 3000);
+
+      loadNotes();
+      setEditingId(null);
+    } catch (err) {
+      setError(`Gagal mengupdate: ${err.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Handle perubahan form edit
+  const handleEditChange = (evt) => {
+    const { name, value } = evt.target;
+    setEditForm({
+      ...editForm,
+      [name]: value,
+    });
+  };
   // Handle perubahan nilai input form
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -52,25 +102,25 @@ export default function Notes() {
     }
   };
   // Handle untuk aksi hapus data
-    const handleDelete = async (id) => {
-        const konfirmasi = confirm("Yakin ingin menghapus catatan ini?")
-        if (!konfirmasi) return
+  const handleDelete = async (id) => {
+    const konfirmasi = confirm("Yakin ingin menghapus catatan ini?");
+    if (!konfirmasi) return;
 
-        try {
-            setLoading(true)
-            setError("")
-            setSuccess("")
+    try {
+      setLoading(true);
+      setError("");
+      setSuccess("");
 
-            await notesAPI.deleteNote(id)
+      await notesAPI.deleteNote(id);
 
-            // Refresh data
-            loadNotes()
-        } catch (err) {
-            setError(`Terjadi kesalahan: ${err.message}`)
-        } finally {
-            setLoading(false)
-        }
+      // Refresh data
+      loadNotes();
+    } catch (err) {
+      setError(`Terjadi kesalahan: ${err.message}`);
+    } finally {
+      setLoading(false);
     }
+  };
   // Load data saat pertama di-render
   useEffect(() => {
     loadNotes();
@@ -160,7 +210,7 @@ export default function Notes() {
 
         {!loading && !error && notes.length > 0 && (
           <GenericTable
-            columns={["#", "Judul", "Isi Catatan"]}
+            columns={["#", "Judul", "Isi Catatan", "Aksi"]}
             data={notes}
             renderRow={(note, index) => (
               <>
@@ -168,23 +218,69 @@ export default function Notes() {
                   {index + 1}.
                 </td>
                 <td className="px-6 py-4">
-                  <div className="font-semibold text-emerald-600">
-                    {note.title}
-                  </div>
+                  {editingId === note.id ? (
+                    <input
+                      type="text"
+                      name="title"
+                      value={editForm.title}
+                      onChange={handleEditChange}
+                      className="w-full p-2 border rounded"
+                    />
+                  ) : (
+                    <div className="font-semibold text-emerald-600">
+                      {note.title}
+                    </div>
+                  )}
                 </td>
                 <td className="px-6 py-4 max-w-xs">
-                  <div className="truncate text-gray-600">{note.content}</div>
+                  {editingId === note.id ? (
+                    <textarea
+                      name="content"
+                      value={editForm.content}
+                      onChange={handleEditChange}
+                      rows="2"
+                      className="w-full p-2 border rounded"
+                    />
+                  ) : (
+                    <div className="truncate text-gray-600">{note.content}</div>
+                  )}
                 </td>
-                 <td className="px-6 py-4 max-w-xs">
-	              <div className="truncate text-gray-600">
-	                  <button
-	                      onClick={() => handleDelete(note.id)}
-	                      disabled={loading}
-	                  >
-	                      <AiFillDelete className="text-red-400 text-2xl hover:text-red-600 transition-colors" />
-	                  </button>
-	              </div>
-	          </td>
+                <td className="px-6 py-4 flex items-center space-x-2">
+                  {editingId === note.id ? (
+                    <>
+                      <button
+                        onClick={() => handleSaveEdit(note.id)}
+                        className="p-1 text-green-500 hover:text-green-700"
+                        disabled={loading}
+                      >
+                        Simpan
+                      </button>
+                      <button
+                        onClick={handleCancelEdit}
+                        className="p-1 text-gray-500 hover:text-gray-700"
+                      >
+                        Batal
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => handleStartEdit(note)}
+                        className="p-1 text-blue-400 hover:text-blue-600 transition-colors"
+                      >
+                        <AiFillEdit className="text-xl" />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(note.id)}
+                        disabled={loading}
+                        className="p-1 text-red-400 hover:text-red-600 transition-colors"
+                      >
+                        <AiFillDelete className="text-xl" />
+                      </button>
+                    </>
+                  )}
+                </td>
+    
               </>
             )}
           />

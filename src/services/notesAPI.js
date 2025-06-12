@@ -21,5 +21,11 @@ export const notesAPI = {
     },
     async deleteNote(id) {
         await axios.delete(`${API_URL}?id=eq.${id}`, { headers })
-    }
+    },
+    async updateNote(id, data) {
+    const response = await axios.patch(`${API_URL}?id=eq.${id}`, data, { 
+      headers 
+    });
+    return response.data;
+  }
 }
