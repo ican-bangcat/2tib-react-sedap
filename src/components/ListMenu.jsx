@@ -1,3 +1,4 @@
+import { CgNotes } from "react-icons/cg"; 
 import { AiOutlineUser } from "react-icons/ai";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { AiTwotoneCustomerService } from "react-icons/ai";
@@ -43,6 +44,12 @@ export default function ListMenu() {
           <NavLink id="menu-8" to="/products" className={menuClass}>
             <MdFastfood className="mr-4 text-x1" />
             Products
+          </NavLink>
+        </li>
+        <li>
+          <NavLink id="menu-9" to="/notes" className={menuClass}>
+            <CgNotes className="mr-4 text-x1"/>
+            Notes
           </NavLink>
         </li>
         <li>

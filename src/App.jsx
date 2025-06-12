@@ -5,6 +5,7 @@ import MainLayout from "./layouts/MainLayout";
 import AuthLayout from "./layouts/AuthLayout";
 import "./assets/tailwind.css";
 
+
 // Regular Pages
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
 const Orders = React.lazy(() => import("./pages/Orders"));
@@ -14,6 +15,7 @@ const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
 const Error400 = React.lazy(() => import("./pages/Error400"));
 const Users = React.lazy(() => import("./pages/Users"));
 const Products = React.lazy(() => import("./pages/Products"));
+const Notes = React.lazy(() => import("./pages/Notes"));
 const ProductDetail = React.lazy(() => import("./pages/ProductDetail"));
 
 // Auth Pages
@@ -38,6 +40,7 @@ function App() {
           <Route path="/customers" element={<Customers />} />
           <Route path="/users" element={<Users />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/notes" element={<Notes />} />
           <Route path="/products/:id" element={<ProductDetail />} />
         </Route>
 
